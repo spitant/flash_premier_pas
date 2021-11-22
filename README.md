@@ -11,7 +11,13 @@ Ce projet a été construit avec l'aide des tutoriels suivant :
 
 ## 2.2 Création de la base de donnée
 
-    python init_db.py
+### 2.2.1 Création de la base de donnée vierge
+
+    python tools/init_db.py
+
+### 2.2.2 Création de la base de donnée contenant des exemples
+
+    python tools/exemple_db.py
 
 ## 2.3 Lancement de l'application
 

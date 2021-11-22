@@ -3,13 +3,22 @@
 {% block content %}
     <h1>{% block title %} Flask 101 (Blog) {% endblock %}</h1>
     {% for post in posts %}
-        <a href="{{ url_for('post', post_id=post['id']) }}">
-            <h2>{{ post['title'] }}</h2>
-        </a>
-        <span class="badge badge-primary">{{ post['created'] }}</span>
-        <a href="{{ url_for('edit', id=post['id']) }}">
-            <span class="badge badge-warning">Edit</span>
-        </a>
-        <hr>
+    <div class="card border-primary row">
+        <div class="card-header text-primary border-primary">
+            <h4><a href="{{ url_for('post', post_id=post['id']) }}" class="text-decoration-none">
+                <h2>{{ post['title'] }}</h2>
+            </a></h4>
+        </div>
+        <div class="card-body border-primary">
+            <h6>
+                <span class="card-subtitle badge bg-primary">{{ post['created'] }}</span>
+                <a href="{{ url_for('edit', id=post['id']) }}">
+                    <span class="badge bg-warning text-dark">Edit</span>
+                </a>
+           </h6>
+            <p class="card-text">{{ post['content'] }}.</p>
+        </div>
+    </div>
+    <br/>
     {% endfor %}
 {% endblock %}

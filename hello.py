@@ -1,10 +1,10 @@
-import os.path
+from os.path import dirname, abspath, join
 import sqlite3
 
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = dirname(abspath(__file__))
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'password'
 
@@ -27,7 +27,7 @@ def create():
     return render_template('create.html')
 
 def get_db_connection():
-    db_path = os.path.join(BASE_DIR, "database.db")
+    db_path = join(BASE_DIR, "database.db")
     conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     return conn
@@ -48,10 +48,14 @@ def index():
     conn.close()
     return render_template('index.html', posts=posts)
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 @app.route('/<int:post_id>')
 def post(post_id):
     post = get_post(post_id)
-    return render_template('post.html', post=post)
+    return render_template('index.html', posts=[post])
 
 @app.route('/<int:id>/edit', methods=('GET', 'POST'))
 def edit(id):

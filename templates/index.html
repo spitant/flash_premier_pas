@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>{% block title %} Flask 101 (Blog) {% endblock %}</h1>
+    <h1 class="text-danger">{% block title %} Flask 101 (Blog) {% endblock %}</h1>
     {% for post in posts %}
     <div class="card border-primary row">
         <div class="card-header text-primary border-primary">
@@ -11,9 +11,9 @@
         </div>
         <div class="card-body border-primary">
             <h6>
-                <span class="card-subtitle badge bg-primary">{{ post['created'] }}</span>
+                <span class="card-subtitle badge bg-info">{{ post['created'] }}</span>
                 <a href="{{ url_for('edit', id=post['id']) }}">
-                    <span class="badge bg-warning text-dark">Edit</span>
+                    <span class="badge bg-primary">Edit</span>
                 </a>
            </h6>
             <p class="card-text">{{ post['content'] }}.</p>

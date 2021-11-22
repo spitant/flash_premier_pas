@@ -20,4 +20,4 @@ jobs:
         pip install -r requirements.txt
     - name: Analysing the code with pylint
       run: |
-        pylint --load-plugins pylint_flask `ls -R|grep .py$|xargs`
+        pylint --load-plugins pylint_flask `ls -R|grep .py$|xargs` || echo "Pylint error"

@@ -6,6 +6,7 @@ Flask
 
 # Analyse static
 pylint
+pylint-flask
 
 # Automated tests
 pytest

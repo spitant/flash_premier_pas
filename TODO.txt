@@ -6,6 +6,7 @@ DONE;Mise à jour de bootstrap en version 5;
 DONE;Mise à jour du theme du site;
 DONE;Creation de la page "à propos de...";
 DONE;Création initial du projet;
+TODO;Reorganisation du code (hello.py);
 TODO;Mettre en place des tests unitaire;
 TODO;Mettre en place un workflow github pour lancer les tests;
 TODO;Ajouter un editeur de markdown;

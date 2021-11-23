@@ -1,0 +1,13 @@
+DONE;Mise en place de la liste des TODOs;
+DONE;Support du markdown;
+DONE;Correction des erreurs pylint;
+DONE;Mettre en place un workflow github pour lancer pylint (analyse statique);
+DONE;Mise à jour de bootstrap en version 5;
+DONE;Mise à jour du theme du site;
+DONE;Creation de la page "à propos de...";
+DONE;Création initial du projet;
+TODO;Mettre en place des tests unitaire;
+TODO;Mettre en place un workflow github pour lancer les tests;
+TODO;Ajouter un editeur de markdown;
+TODO;Mettre en place un système de pagination;
+TODO;Mettre en place un system d'authenfication;

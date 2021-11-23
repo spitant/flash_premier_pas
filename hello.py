@@ -1,4 +1,6 @@
 """Fichier principal de l'application (temporaire: il faut que je reorganise tout ça...)"""
+from os.path import join, abspath, dirname
+
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
 
@@ -73,7 +75,21 @@ def todo():
     Page des choses à faire
     :return: La page des choses à faire
     """
-    return render_template('todo.html')
+    current_dir = dirname(abspath(__file__))
+    list_todo = []
+    list_done = []
+    with open(join(current_dir, "TODO.txt"), encoding='UTF-8') as todo_file:
+        for line in todo_file.readlines():
+            if len(line.split(';')) >= 2:
+                status = line.split(';')[0]
+                if status == "DONE":
+                    list_done.append(line.split(';')[1])
+                if status == "TODO":
+                    list_todo.append(line.split(';')[1])
+    done = len(list_done)
+    total = len(list_todo) + done
+    stat = f'{done}/{total}'
+    return render_template('todo.html', list_todo=list_todo, list_done=list_done, stat=stat)
 
 
 @app.route('/<int:post_id>')

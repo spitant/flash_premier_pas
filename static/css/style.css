@@ -22,7 +22,7 @@ div.checker span {
 }
 
 .todo-list .todo-item.complete span {
-    text-decoration: line-through.
+    text-decoration: line-through;
 }
 
 div.checker span {

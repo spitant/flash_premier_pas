@@ -1,13 +1,7 @@
-import sqlite3
-from os.path import join, abspath, dirname
+"""Script de generation de base de données"""
+from database_utils import open_database, execute_schema, close_database
 
-DATABASE_FILE="database.db"
-DATABASE_SCHEMA="schema.sql"
-BASE_DIR = dirname(abspath(__file__))
-
-connection = sqlite3.connect(join(BASE_DIR, "..", DATABASE_FILE))
-with open(join(BASE_DIR, "..", DATABASE_SCHEMA)) as f:
-    connection.executescript(f.read())
-
-connection.commit()
-connection.close()
+if __name__ == '__main__':
+    connection = open_database()
+    execute_schema(connection)
+    close_database(connection)

@@ -1,17 +1,21 @@
 """Fichier principal de l'application (temporaire: il faut que je reorganise tout ça...)"""
-import sqlite3
-from os.path import dirname, abspath, join
-
 from flask import Flask, render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
 
-BASE_DIR = dirname(abspath(__file__))
+from tools.database_utils import open_database, insert_post, close_database, getall_post, \
+    delete_post, getone_post, \
+    update_post
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'password'
 
 
 @app.route('/create', methods=('GET', 'POST'))
 def create():
+    """
+    Création d'un nouvel article
+    :return: La page de création d'un nouvel article
+    """
     if request.method == 'POST':
         title = request.form['title']
         content = request.form['content']
@@ -19,28 +23,23 @@ def create():
         if not title:
             flash('Title is required!')
         else:
-            conn = get_db_connection()
-            conn.execute('INSERT INTO posts (title, content) VALUES (?, ?)',
-                         (title, content))
-            conn.commit()
-            conn.close()
+            connection = open_database()
+            insert_post(connection, title, content)
+            close_database(connection)
             return redirect(url_for('index'))
 
     return render_template('create.html')
 
 
-def get_db_connection():
-    db_path = join(BASE_DIR, "database.db")
-    conn = sqlite3.connect(db_path)
-    conn.row_factory = sqlite3.Row
-    return conn
-
-
 def get_post(post_id):
-    conn = get_db_connection()
-    post_data = conn.execute('SELECT * FROM posts WHERE id = ?',
-                        (post_id,)).fetchone()
-    conn.close()
+    """
+    Récupération d'un article spécifique
+    :param post_id: Identifiant de l'article
+    :return: Article correspondant
+    """
+    connection = open_database()
+    post_data = getone_post(connection, post_id)
+    close_database(connection)
     if post_data is None:
         abort(404)
     return post_data
@@ -48,37 +47,52 @@ def get_post(post_id):
 
 @app.route('/')
 def index():
-    conn = get_db_connection()
-    posts = conn.execute('SELECT * FROM posts').fetchall()
-    conn.close()
+    """
+    Page d'accueil
+    :return: La page d'accueil
+    """
+    connection = open_database()
+    posts = getall_post(connection)
+    close_database(connection)
     return render_template('index.html', posts=posts)
 
 
 @app.route('/about')
 def about():
+    """
+    Page à propos de ...
+    :return: La page à propos de ...
+    """
     return render_template('about.html')
 
 
 @app.route('/<int:post_id>')
 def post(post_id):
+    """
+    Affichage d'un article spécifique
+    :param post_id: Identifiant de l'article
+    :return: Article correspondant
+    """
     return render_template('index.html', posts=[get_post(post_id)])
 
 
 @app.route('/<int:post_id>/edit', methods=('GET', 'POST'))
 def edit(post_id):
+    """
+    Edition d'un article spécifique
+    :param post_id: Identifiant de l'article
+    :return: Article correspondant
+    """
     if request.method == 'POST':
         title = request.form['title']
         content = request.form['content']
 
         if not title:
-            flash('Title is required!')
+            flash('Un titre est requis!')
         else:
-            conn = get_db_connection()
-            conn.execute('UPDATE posts SET title = ?, content = ?'
-                         ' WHERE id = ?',
-                         (title, content, post_id))
-            conn.commit()
-            conn.close()
+            conn = open_database()
+            update_post(conn, post_id, title, content)
+            close_database(conn)
             return redirect(url_for('index'))
 
     return render_template('edit.html', post=get_post(post_id))
@@ -86,12 +100,17 @@ def edit(post_id):
 
 @app.route('/<int:post_id>/delete', methods=('POST',))
 def delete(post_id):
+    """
+    Suppression d'un article spécifique
+    :param post_id: Identifiant de l'article
+    :return: Article correspondant
+    """
     post_request = get_post(post_id)
-    conn = get_db_connection()
-    conn.execute('DELETE FROM posts WHERE id = ?', (post_id,))
-    conn.commit()
-    conn.close()
-    flash('"{}" was successfully deleted!'.format(post_request['title']))
+    conn = open_database()
+    delete_post(conn, post_id)
+    close_database(conn)
+    titre = post_request['title']
+    flash(f'"{titre}" was successfully deleted!')
     return redirect(url_for('index'))
 
 

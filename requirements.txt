@@ -3,6 +3,7 @@
 
 # Flask Framework
 Flask
+werkzeug
 
 # Analyse static
 pylint

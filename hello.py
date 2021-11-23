@@ -110,7 +110,7 @@ def delete(post_id):
     delete_post(conn, post_id)
     close_database(conn)
     titre = post_request['title']
-    flash(f'"{titre}" was successfully deleted!')
+    flash(f'L\'article "{titre}" a été supprimé avec succès!')
     return redirect(url_for('index'))
 
 

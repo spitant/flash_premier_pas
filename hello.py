@@ -31,14 +31,15 @@ def create():
     return render_template('create.html')
 
 
-def get_post(post_id):
+def get_post(post_id, markdown_enable=True):
     """
     Récupération d'un article spécifique
     :param post_id: Identifiant de l'article
+    :param markdown_enable: activation du markdown
     :return: Article correspondant
     """
     connection = open_database()
-    post_data = getone_post(connection, post_id)
+    post_data = getone_post(connection, post_id, markdown_enable)
     close_database(connection)
     if post_data is None:
         abort(404)
@@ -95,7 +96,7 @@ def edit(post_id):
             close_database(conn)
             return redirect(url_for('index'))
 
-    return render_template('edit.html', post=get_post(post_id))
+    return render_template('edit.html', post=get_post(post_id, False))
 
 
 @app.route('/<int:post_id>/delete', methods=('POST',))

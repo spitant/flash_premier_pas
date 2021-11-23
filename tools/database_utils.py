@@ -2,6 +2,8 @@
 import sqlite3
 from os.path import join, abspath, dirname
 
+import markdown
+
 DATABASE_FILE = "database.db"
 DATABASE_SCHEMA = "schema.sql"
 BASE_DIR = dirname(abspath(__file__))
@@ -51,13 +53,19 @@ def insert_post(connection, titre, contenu):
                 (titre, contenu))
 
 
-def getall_post(connection):
+def getall_post(connection, markdown_enable=True):
     """
     Récupération de la liste des articles.
     :param connection: la connection à la base sqlite3 (sous forme d'objet)
+    :param markdown_enable: activation du markdown
     :return: la liste de tout les articles
     """
-    return connection.execute('SELECT * FROM posts').fetchall()
+    posts = connection.execute('SELECT * FROM posts').fetchall()
+    dict_posts = [dict(post) for post in posts]
+    if markdown_enable:
+        for post in dict_posts:
+            post['content'] = markdown.markdown(post['content'])
+    return dict_posts
 
 
 def delete_post(connection, post_id):
@@ -70,15 +78,19 @@ def delete_post(connection, post_id):
     connection.execute('DELETE FROM posts WHERE id = ?', (post_id,))
 
 
-def getone_post(connection, post_id):
+def getone_post(connection, post_id, markdown_enable=True):
     """
     Récupération d'un article.
     :param connection: la connection à la base sqlite3 (sous forme d'objet)
     :param post_id: identifiant de l'article
+    :param markdown_enable: activation du markdown
     :return: L'article correspondant à l'identifiant
     """
-    return connection.execute('SELECT * FROM posts WHERE id = ?',
-                              (post_id,)).fetchone()
+    post = dict(connection.execute('SELECT * FROM posts WHERE id = ?',
+                              (post_id,)).fetchone())
+    if markdown_enable:
+        post['content'] = markdown.markdown(post['content'])
+    return post
 
 
 def update_post(connection, post_id, titre, contenu):

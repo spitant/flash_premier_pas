@@ -5,6 +5,9 @@
 Flask
 werkzeug
 
+# Support markdown
+markdown
+
 # Analyse static
 pylint
 pylint-flask

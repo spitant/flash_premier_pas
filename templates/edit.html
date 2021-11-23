@@ -21,7 +21,8 @@
     <div class="mb-3">
         <label for="content" class="form-label">Contenu</label>
         <textarea name="content" placeholder="Contenu de l'article"
-                  class="form-control">{{ request.form['content'] or post['content'] }}</textarea>
+                  class="form-control" rows="11">{{ request.form['content'] or post['content']
+            }}</textarea>
     </div>
     <div class="mb-3">
         <button type="submit" class="btn btn-success">Sauvegarder</button>

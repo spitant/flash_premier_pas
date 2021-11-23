@@ -16,7 +16,7 @@
                     <span class="badge bg-primary">Edit</span>
                 </a>
            </h6>
-            <p class="card-text">{{ post['content'] }}.</p>
+            <p class="card-text">{{ post['content'] | safe }}</p>
         </div>
     </div>
     <br/>

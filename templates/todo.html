@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="text-danger">Flask 101 (Blog)</h1>
+<div class="card card-white card-todo">
+    <div class="card-body">
+        <div class="todo-list">
+            <h2 class="text-danger">TODO list :</h2>
+
+            <div class="todo-item complete">
+                <div class="checker ">
+                    <span class="">
+                        <input type="checkbox" onclick="return false;" checked>
+                    </span>
+                </div>
+                <span>Support du markdown</span>
+            </div>
+            <div class="todo-item">
+                <div class="checker">
+                    <span class="">
+                        <input type="checkbox" onclick="return false;">
+                    </span>
+                </div>
+                <span>Mettre en place un system d'authenfication</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

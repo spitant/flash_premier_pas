@@ -67,6 +67,15 @@ def about():
     return render_template('about.html')
 
 
+@app.route('/todo')
+def todo():
+    """
+    Page des choses à faire
+    :return: La page des choses à faire
+    """
+    return render_template('todo.html')
+
+
 @app.route('/<int:post_id>')
 def post(post_id):
     """

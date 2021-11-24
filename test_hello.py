@@ -2,7 +2,32 @@
 import random
 from string import ascii_lowercase
 
+import pytest
+
 from hello import app
+from tools.database_utils import open_database, execute_schema, close_database
+
+
+@pytest.fixture(scope="session", autouse=True)
+def auto_setup(request):
+    """
+    Mise en place de l'environnement de test
+    :param request:
+    :return:None
+    """
+    print('auto_setup')
+    connection = open_database()
+    execute_schema(connection)
+    close_database(connection)
+
+    def auto_teardown():
+        """
+        Netoyage de l'environnement
+        :return: None
+        """
+        print('auto_teardown')
+
+    request.addfinalizer(auto_teardown)
 
 
 def random_string(size=6, chars=ascii_lowercase):

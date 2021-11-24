@@ -15,6 +15,7 @@ pylint-flask
 # Automated tests
 pytest
 pytest-cov
+pytest-flask
 
 # Example base de données
 Lorem

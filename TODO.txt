@@ -8,6 +8,7 @@ DONE;Creation de la page "à propos de...";
 DONE;Création initial du projet;
 DONE;Mettre en place des tests unitaire;
 DONE;Mettre en place un workflow github pour lancer les tests;
+DONE;Ajout de la couverture de code lors du lancement des tests;
 TODO;Reorganisation du code (hello.py);
 TODO;Ajouter un editeur de markdown;
 TODO;Mettre en place un système de pagination;

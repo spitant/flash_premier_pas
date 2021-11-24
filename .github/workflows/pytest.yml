@@ -20,4 +20,4 @@ jobs:
         pip install -r requirements.txt
     - name: Lancement des tests
       run: |
-        pytest -s
+        pytest -s --cov

@@ -1,5 +1,6 @@
 """Fonctions d'aide pour la manipulation de la base de donnée"""
 import sqlite3
+import sys
 from os.path import join, abspath, dirname
 
 import markdown
@@ -53,14 +54,16 @@ def insert_post(connection, titre, contenu):
                 (titre, contenu))
 
 
-def getall_post(connection, markdown_enable=True):
+def getall_post(connection, markdown_enable=True, offset=0, limit=sys.maxsize):
     """
     Récupération de la liste des articles.
     :param connection: la connection à la base sqlite3 (sous forme d'objet)
     :param markdown_enable: activation du markdown
+    :param offset: index de début
+    :param  limit: limit max de post
     :return: la liste de tout les articles
     """
-    posts = connection.execute('SELECT * FROM posts').fetchall()
+    posts = connection.execute('SELECT * FROM posts LIMIT ?,?', (offset, limit,)).fetchall()
     dict_posts = [dict(post) for post in posts]
     if markdown_enable:
         for post in dict_posts:
@@ -88,7 +91,7 @@ def getone_post(connection, post_id, markdown_enable=True):
     """
     try:
         post = dict(connection.execute('SELECT * FROM posts WHERE id = ?',
-                                  (post_id,)).fetchone())
+                                       (post_id,)).fetchone())
     except TypeError:
         return None
     if markdown_enable:

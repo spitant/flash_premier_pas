@@ -26,6 +26,6 @@ Ce projet a été construit avec l'aide des tutoriels suivant :
     export FLASK_ENV=development
     flask run
 
-# 3 test
+# 3 Tests
 ## 3.1 Lancement des tests
     pytest

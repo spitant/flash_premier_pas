@@ -2,7 +2,7 @@
 
 {% block content %}
 <form action="{{ url_for('delete', post_id=post['id']) }}" method="POST">
-    <h1 class="text-danger">{% block title %} Edition "{{ post['title'] }}" {% endblock %}
+    <h1 class="text-danger"><i class="far fa-edit"></i> {% block title %} Edition "{{ post['title'] }}" {% endblock %}
         <input type="submit" value="Supprimer"
                 class="btn btn-danger float-end"
                 onclick="return confirm('Etes-vous sûrs  de vouloir supprimer cet article?')">
@@ -11,7 +11,7 @@
 
 <form method="post">
     <div class="mb-3">
-        <label for="title" class="form-label">Titre</label>
+        <label for="title" class="form-label"><h4 class="text-primary">Titre</h4></label>
         <input type="text" name="title" placeholder="Titre de l'article"
                class="form-control"
                value="{{ request.form['title'] or post['title'] }}">
@@ -19,7 +19,7 @@
     </div>
 
     <div class="mb-3">
-        <label for="content" class="form-label">Contenu</label>
+        <label for="content" class="form-label"><h4 class="text-primary">Contenu</h4></label>
         <textarea name="content" placeholder="Contenu de l'article"
                   class="form-control" rows="11">{{ request.form['content'] or post['content']
             }}</textarea>

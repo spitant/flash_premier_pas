@@ -86,8 +86,11 @@ def getone_post(connection, post_id, markdown_enable=True):
     :param markdown_enable: activation du markdown
     :return: L'article correspondant à l'identifiant
     """
-    post = dict(connection.execute('SELECT * FROM posts WHERE id = ?',
-                              (post_id,)).fetchone())
+    try:
+        post = dict(connection.execute('SELECT * FROM posts WHERE id = ?',
+                                  (post_id,)).fetchone())
+    except TypeError:
+        return None
     if markdown_enable:
         post['content'] = markdown.markdown(post['content'])
     return post

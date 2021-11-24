@@ -1,3 +1,4 @@
+"""Configuration file for the Sphinx documentation builder."""
 # Configuration file for the Sphinx documentation builder.
 #
 # This file only contains a selection of the most common options. For a full
@@ -13,14 +14,13 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
-
+# pylint: skip-file
 
 # -- Project information -----------------------------------------------------
 
 project = 'Flask 101'
 copyright = '2021, spitant'
 author = 'spitant'
-
 
 # -- General configuration ---------------------------------------------------
 
@@ -44,7 +44,6 @@ language = 'fr'
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = []
-
 
 # -- Options for HTML output -------------------------------------------------
 

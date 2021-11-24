@@ -1,4 +1,4 @@
-name: Pylint
+name: Pylint (Analyse de code)
 
 on: [push]
 

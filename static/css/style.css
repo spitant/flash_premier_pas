@@ -48,3 +48,8 @@ div.checker {
     margin-bottom: 20px;
     border: none;
 }
+
+.text-footer {
+    font-family: 'Garamond', 'Georgia', serif;
+    font-size: 14px;
+}

@@ -19,3 +19,6 @@ pytest-flask
 
 # Example base de données
 Lorem
+
+# Documentation
+sphinx

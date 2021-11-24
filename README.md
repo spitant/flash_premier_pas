@@ -9,6 +9,7 @@ Ce projet a été construit avec l'aide des tutoriels suivant :
 # 2. Utilisation
 
 ## 2.1 Installation des prérequis
+
     pip install -r requirements.txt
 
 ## 2.2 Création de la base de donnée
@@ -34,4 +35,11 @@ Ce projet a été construit avec l'aide des tutoriels suivant :
     pylint --load-plugins pylint_flask $(find . -name "*.py" | xargs)
 
 ## 3.2 Lancement des tests
-    pytest
+
+    pytest --cov
+
+# 4 Documentation
+
+## 4.1 Generation de la documentation
+
+    make html

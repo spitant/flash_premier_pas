@@ -20,9 +20,8 @@
 
     <div class="mb-3">
         <label for="content" class="form-label"><h4 class="text-primary">Contenu</h4></label>
-        <textarea name="content" placeholder="Contenu de l'article"
-                  class="form-control" rows="11">{{ request.form['content'] or post['content']
-            }}</textarea>
+        {{mde.editor(name='content', default=(request.form['content'] or
+        post['content']))}}
     </div>
     <div class="mb-3">
         <button type="submit" class="btn btn-success"><i class="far fa-save"></i> Sauvegarder

@@ -4,8 +4,8 @@ from string import ascii_lowercase
 
 import pytest
 
-from project.routes import app
-from project.tools.init_db import init_database
+from projet.routes import app
+from projet.tools.init_db import init_database
 
 
 @pytest.fixture(scope="session", autouse=True)

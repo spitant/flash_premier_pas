@@ -2,7 +2,7 @@
 
 {% block content %}
 <form action="{{ url_for('delete', post_id=post['id']) }}" method="POST">
-    <h1 class="text-danger"><i class="far fa-edit"></i> {% block title %} Edition "{{ post['title'] }}" {% endblock %}
+    <h1 class="text-danger"><i class="far fa-edit"></i> {% block title %} Edition "{{ post['titre'] }}" {% endblock %}
         <input type="submit" value="Supprimer"
                 class="btn btn-danger float-end"
                 onclick="return confirm('Etes-vous sûrs  de vouloir supprimer cet article?')">

@@ -4,8 +4,8 @@ from os.path import join, abspath, dirname
 from flask import render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
 
-from project.models import Article
-from project import app, db
+from projet.models import Article
+from projet import app, db
 
 
 @app.route('/create', methods=('GET', 'POST'))
@@ -29,11 +29,10 @@ def create():
     return render_template('create.html')
 
 
-def get_post(post_id, markdown_enable=True):
+def get_post(post_id):
     """
     Récupération d'un article spécifique
     :param post_id: Identifiant de l'article
-    :param markdown_enable: activation du markdown
     :return: Article correspondant
     """
     post_data = Article.query.filter_by(id=post_id).first()
@@ -114,7 +113,7 @@ def edit(post_id):
             db.session.commit()
             return redirect(url_for('index'))
 
-    return render_template('edit.html', post=get_post(post_id, False))
+    return render_template('edit.html', post=get_post(post_id))
 
 
 @app.route('/<int:post_id>/delete', methods=('POST',))
@@ -124,11 +123,9 @@ def delete(post_id):
     :param post_id: Identifiant de l'article
     :return: Article correspondant
     """
-    post_request = get_post(post_id)
     Article.query.filter_by(id=post_id).delete()
     db.session.commit()
-    titre = post_request['title']
-    flash(f'L\'article "{titre}" a été supprimé avec succès!')
+    flash('L\'article a été supprimé avec succès!')
     return redirect(url_for('index'))
 
 

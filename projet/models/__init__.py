@@ -2,7 +2,7 @@
 import markdown
 from sqlalchemy.sql import func
 
-from project import db
+from projet import db
 
 
 class Article(db.Model):
@@ -23,4 +23,8 @@ class Article(db.Model):
         return f'<Article({self.id}): {self.titre}>'
 
     def markdown_content(self):
-        return markdown.markdown(self.content)
+        """
+        Le formatage markdown du contenue
+        :return: Le formatage markdown du contenue
+        """
+        return markdown.markdown(self.contenu)

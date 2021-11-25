@@ -1,14 +1,10 @@
 """Script de generation de base de données contenant des exemples de postes"""
-from os.path import exists, join
-from os import remove
-from shutil import rmtree
 
-from flask_migrate import init, migrate, upgrade
 from lorem.text import TextLorem
 
-from project import app, db, Config
-from project.models import Article
-from project.tools.init_db import init_database
+from projet import app, db
+from projet.models import Article
+from projet.tools.init_db import init_database
 
 NB_EXAMPLE = 100
 

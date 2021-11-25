@@ -1,4 +1,5 @@
 """Création de l'instance flask"""
+# pylint: skip-file
 from os.path import join, abspath, dirname
 
 import markdown
@@ -31,4 +32,4 @@ htmlmin = HTMLMIN(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-from project import routes, models
+from projet import routes, models

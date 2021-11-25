@@ -1,3 +1,4 @@
 """Point d'entré de l'application"""
+# pylint: skip-file
 
-from project import app
+from projet import app

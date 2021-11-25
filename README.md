@@ -16,15 +16,15 @@ Ce projet a été construit avec l'aide des tutoriels suivant :
 
 ### 2.2.1 Création de la base de donnée vierge
 
-    python tools/init_db.py
+    python -m project.tools.init_db.py
 
 ### 2.2.2 Création de la base de donnée contenant des exemples
 
-    python tools/exemple_db.py
+    python project.tools.exemple_db.py
 
 ## 2.3 Lancement de l'application
 
-    export FLASK_APP=hello
+    export FLASK_APP=app
     export FLASK_ENV=development
     flask run
 

@@ -1,7 +1,14 @@
 """Script de generation de base de données contenant des exemples de postes"""
+from os.path import exists, join
+from os import remove
+from shutil import rmtree
+
+from flask_migrate import init, migrate, upgrade
 from lorem.text import TextLorem
 
-from database_utils import open_database, execute_schema, close_database, insert_post
+from project import app, db, Config
+from project.models import Article
+from project.tools.init_db import init_database
 
 NB_EXAMPLE = 100
 
@@ -27,9 +34,10 @@ def content(lorem_generator):
 
 
 if __name__ == '__main__':
-    connection = open_database()
-    execute_schema(connection)
-    lorem = TextLorem(srange=(1, 3), prange=(10, 40))
-    for _ in range(0, 100):
-        insert_post(connection, lorem.sentence()[:-1], content(lorem))
-    close_database(connection)
+    init_database()
+    with app.app_context():
+        lorem = TextLorem(srange=(1, 3), prange=(10, 40))
+        for _ in range(0, 100):
+            art = Article(titre=lorem.sentence()[:-1], contenu=content(lorem))
+            db.session.add(art)
+            db.session.commit()

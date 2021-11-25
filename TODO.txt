@@ -13,8 +13,10 @@ DONE;Ajout de logo;
 DONE;Génération de la documentation;
 DONE;Ajout d'un editeur de markdown;
 DONE;Ajout d'un favicon;
-TODO;Reorganisation du code (hello.py);
+DONE;Reorganisation du code (hello.py);
+DONE;Utiliser flask-sqlalchemy pour gérer la base de donnée;
 TODO;Mettre en place un système de pagination;
 TODO;Mettre en place un system d'authenfication;
 TODO;Enrichir les tests unitaire;
+
 

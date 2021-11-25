@@ -4,8 +4,8 @@ from string import ascii_lowercase
 
 import pytest
 
-from hello import app
-from tools.database_utils import open_database, execute_schema, close_database
+from project.routes import app
+from project.tools.init_db import init_database
 
 
 @pytest.fixture(scope="session", autouse=True)
@@ -16,9 +16,7 @@ def auto_setup(request):
     :return:None
     """
     print('auto_setup')
-    connection = open_database()
-    execute_schema(connection)
-    close_database(connection)
+    init_database()
 
     def auto_teardown():
         """

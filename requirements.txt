@@ -5,6 +5,10 @@
 Flask
 werkzeug
 
+# Database
+flask-sqlalchemy
+flask-migrate
+
 # Minify flask text/html
 Flask-HTMLmin
 

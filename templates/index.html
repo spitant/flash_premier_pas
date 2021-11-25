@@ -7,18 +7,18 @@
     <div class="card border-primary row">
         <div class="card-header text-primary border-primary">
             <h4><a href="{{ url_for('post', post_id=post['id']) }}" class="text-decoration-none">
-                <h2><i class="fas fa-newspaper"></i> {{ post['title'] }}</h2>
+                <h2><i class="fas fa-newspaper"></i> {{ post['titre'] }}</h2>
             </a></h4>
         </div>
         <div class="card-body border-primary">
             <h6>
                 <span class="card-subtitle badge bg-info"><i class="far fa-clock"></i> {{
-                    post['created'] }}</span>
+                    post['date_creation'] }}</span>
                 <a href="{{ url_for('edit', post_id=post['id']) }}">
                     <span class="badge bg-primary"><i class="far fa-edit"></i> Edit</span>
                 </a>
            </h6>
-            <p class="card-text">{{ post['content'] | safe }}</p>
+            <p class="card-text">{{ markdown(post['contenu']) | safe }}</p>
         </div>
     </div>
     <br/>

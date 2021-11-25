@@ -14,14 +14,14 @@
         <label for="title" class="form-label"><h4 class="text-primary">Titre</h4></label>
         <input type="text" name="title" placeholder="Titre de l'article"
                class="form-control"
-               value="{{ request.form['title'] or post['title'] }}">
+               value="{{ request.form['title'] or post['titre'] }}">
         </input>
     </div>
 
     <div class="mb-3">
         <label for="content" class="form-label"><h4 class="text-primary">Contenu</h4></label>
         {{mde.editor(name='content', default=(request.form['content'] or
-        post['content']))}}
+        post['contenu']))}}
     </div>
     <div class="mb-3">
         <button type="submit" class="btn btn-success"><i class="far fa-save"></i> Sauvegarder

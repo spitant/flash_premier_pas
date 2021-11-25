@@ -2,6 +2,7 @@
 from os.path import join, abspath, dirname
 
 from flask import Flask, render_template, request, url_for, flash, redirect
+from flask_htmlmin import HTMLMIN
 from flask_mde import Mde
 from werkzeug.exceptions import abort
 
@@ -12,6 +13,9 @@ from tools.database_utils import open_database, insert_post, close_database, get
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'password'
 mde = Mde(app)
+app.config['MINIFY_HTML'] = True
+htmlmin = HTMLMIN(app)
+
 
 @app.route('/create', methods=('GET', 'POST'))
 def create():

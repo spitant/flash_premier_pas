@@ -5,6 +5,9 @@
 Flask
 werkzeug
 
+# Minify flask text/html
+Flask-HTMLmin
+
 # Support markdown
 markdown
 Flask-MDE

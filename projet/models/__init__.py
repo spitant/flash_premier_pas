@@ -12,8 +12,10 @@ class Article(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     titre = db.Column(db.String(256), index=True, unique=False)
     contenu = db.Column(db.String(), index=True, unique=False)
-    date_creation = db.Column(db.DateTime(timezone=True), server_default=func.now())
-    date_miseajour = db.Column(db.DateTime(timezone=True), onupdate=func.now())
+    date_creation = db.Column(db.DateTime(timezone=True),
+                              server_default=func.now())
+    date_miseajour = db.Column(db.DateTime(timezone=True),
+                               onupdate=func.now())
 
     def __repr__(self):
         """

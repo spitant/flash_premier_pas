@@ -7,6 +7,7 @@ from flask_migrate import init, migrate, upgrade
 
 from projet import app, Config
 
+
 def init_database():
     """
     Création ou Reset de la base de donnée

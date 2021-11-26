@@ -32,4 +32,4 @@ htmlmin = HTMLMIN(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
-from projet import routes, models
+from projet import routes, models  # noqa: E501,E402,F401

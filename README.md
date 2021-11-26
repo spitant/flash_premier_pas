@@ -32,7 +32,7 @@ Ce projet a été construit avec l'aide des tutoriels suivant :
 
 ## 3.1 Lacement de l'analyse statique
 
-    pylint --load-plugins pylint_flask $(find . -name "*.py" | xargs)
+    pylint $(find . -name "*.py" | xargs)
 
 ## 3.2 Lancement des tests
 

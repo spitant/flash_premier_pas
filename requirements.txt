@@ -19,6 +19,7 @@ Flask-MDE
 # Analyse static
 pylint
 pylint-flask
+pylint_flask_sqlalchemy
 
 # Automated tests
 pytest

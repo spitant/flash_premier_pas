@@ -1,4 +1,4 @@
-name: Pylint (Analyse de code)
+name: Analyse de code
 
 on: [push]
 
@@ -21,3 +21,9 @@ jobs:
     - name: Analyse de code avec pylint
       run: |
         pylint $(find . -name "*.py" | xargs)
+    - name: Analyse de code avec pycodestyle
+      run: |
+        pycodestyle $(find . -name "*.py" | xargs)
+    - name: Analyse de code avec flake8
+      run: |
+        flake8 $(find . -name "*.py" | xargs)

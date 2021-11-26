@@ -1,11 +1,11 @@
-"""Fichier principal de l'application (temporaire: il faut que je reorganise tout ça...)"""
+"""Fichier principal de l'application"""
 from os.path import join, abspath, dirname
 
 from flask import render_template, request, url_for, flash, redirect
 from werkzeug.exceptions import abort
 
-from projet.models import Article
 from projet import app, db
+from projet.models import Article
 
 
 @app.route('/create', methods=('GET', 'POST'))
@@ -80,7 +80,8 @@ def todo():
     done = len(list_done)
     total = len(list_todo) + done
     stat = f'{done}/{total}'
-    return render_template('todo.html', list_todo=list_todo, list_done=list_done, stat=stat)
+    return render_template('todo.html', list_todo=list_todo,
+                           list_done=list_done, stat=stat)
 
 
 @app.route('/<int:post_id>')

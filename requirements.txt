@@ -20,6 +20,8 @@ Flask-MDE
 pylint
 pylint-flask
 pylint_flask_sqlalchemy
+pycodestyle
+flake8
 
 # Automated tests
 pytest

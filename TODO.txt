@@ -15,8 +15,10 @@ DONE;Ajout d'un editeur de markdown;
 DONE;Ajout d'un favicon;
 DONE;Reorganisation du code (hello.py);
 DONE;Utiliser flask-sqlalchemy pour gérer la base de donnée;
-TODO;Mettre en place un système de pagination;
+DONE;Mettre en place un système de pagination;
 TODO;Mettre en place un system d'authenfication;
 TODO;Enrichir les tests unitaire;
+TODO;Creer un systeme de packaging (wheel);
+TODO;Publier sous github un package;
 
 

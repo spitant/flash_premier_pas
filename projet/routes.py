@@ -7,6 +7,7 @@ from werkzeug.exceptions import abort
 from projet import app, db
 from projet.models import Article
 
+ROWS_PER_PAGE = 5
 
 @app.route('/create', methods=('GET', 'POST'))
 def create():
@@ -41,13 +42,21 @@ def get_post(post_id):
     return post_data
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
     """
     Page d'accueil
     :return: La page d'accueil
     """
-    posts = db.session.query(Article).all()
+    # récupération de la page
+    try:
+        page = int(request.args.get('page'))
+    except ValueError:
+        return redirect(url_for('index', page=1))
+    except TypeError:
+        return redirect(url_for('index', page=1))
+    posts = db.session.query(Article).paginate(page=page,
+                                               per_page=ROWS_PER_PAGE)
     return render_template('index.html', posts=posts)
 
 
@@ -91,7 +100,9 @@ def post(post_id):
     :param post_id: Identifiant de l'article
     :return: Article correspondant
     """
-    return render_template('index.html', posts=[get_post(post_id)])
+    posts = Article.query.filter_by(id=post_id).\
+        paginate(page=1,per_page=ROWS_PER_PAGE)
+    return render_template('index.html', posts=posts)
 
 
 @app.route('/<int:post_id>/edit', methods=('GET', 'POST'))

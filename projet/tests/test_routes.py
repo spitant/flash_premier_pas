@@ -75,7 +75,7 @@ def test_url_ok():
     for url in list_routes("GET"):
         # on verifie que les URL sans parametres...
         if "<" not in url and ">" not in url:
-            response = app.test_client().get(url)
+            response = app.test_client().get(url,follow_redirects=True)
             assert response.status_code == 200  # OK
         # assert response.data == b'Hello, World!'
 

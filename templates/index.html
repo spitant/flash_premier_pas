@@ -1,26 +1,62 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 class="text-danger"><i class="fas fa-blog"></i> {% block title %} Flask 101 (Blog) {%
-        endblock %}</h1>
-    {% for post in posts %}
-    <div class="card border-primary row">
-        <div class="card-header text-primary border-primary">
-            <h4><a href="{{ url_for('post', post_id=post['id']) }}" class="text-decoration-none">
-                <h2><i class="fas fa-newspaper"></i> {{ post['titre'] }}</h2>
-            </a></h4>
-        </div>
-        <div class="card-body border-primary">
-            <h6>
+<h1 class="text-danger"><i class="fas fa-blog"></i> {% block title %} Flask 101 (Blog) {%
+    endblock %}</h1>
+
+{% for post in posts.items %}
+<div class="card border-primary row">
+    <div class="card-header text-primary border-primary">
+        <h4><a href="{{ url_for('post', post_id=post['id']) }}" class="text-decoration-none">
+            <h2><i class="fas fa-newspaper"></i> {{ post['titre'] }}</h2>
+        </a></h4>
+    </div>
+    <div class="card-body border-primary">
+        <h6>
                 <span class="card-subtitle badge bg-info"><i class="far fa-clock"></i> {{
                     post['date_creation'] }}</span>
-                <a href="{{ url_for('edit', post_id=post['id']) }}">
-                    <span class="badge bg-primary"><i class="far fa-edit"></i> Edit</span>
-                </a>
-           </h6>
-            <p class="card-text">{{ markdown(post['contenu']) | safe }}</p>
-        </div>
+            <a href="{{ url_for('edit', post_id=post['id']) }}">
+                <span class="badge bg-primary"><i class="far fa-edit"></i> Edit</span>
+            </a>
+        </h6>
+        <p class="card-text">{{ markdown(post['contenu']) | safe }}</p>
     </div>
-    <br/>
-    {% endfor %}
+</div>
+<br/>
+{% endfor %}
+<!-- Pagination Links-->
+{% if posts.pages != 1  %}
+<div class="text-right">
+    <a href="{{ url_for('index', page=posts.prev_num, _method='GET') }}"
+       class="btn btn-outline-dark
+       {% if posts.page == 1 %}disabled{% endif %}">
+        &laquo;
+    </a><!-- Loop through the number of pages to display a link for each-->
+    {% for page_num in posts.iter_pages(left_edge=1, right_edge=1,
+    left_current=1, right_current=2) %}{% if page_num %}
+    <!-- Check for the active page and set the link to "Active"-->
+    {% if posts.page == page_num %}
+    <a href="{{ url_for('index', page=page_num) }}"
+       class="btn btn-dark">
+        {{ page_num }}
+    </a>
+    {% else %}
+    <a href="{{ url_for('index', page=page_num) }}"
+       class="btn btn-outline-dark">
+        {{ page_num }}
+    </a>
+    {% endif %}
+    {% else %}
+    ...
+    {% endif %}
+    {% endfor %}    <a href="{{ url_for('index', page=posts.next_num) }}"
+                       class="btn btn-outline-dark
+       {% if posts.page == posts.pages %}disabled{% endif %}">
+    &raquo;
+</a>
+</div>
+<p class="text-right mt-3">
+    Showing page {{ posts.page }} of {{ posts.pages }}
+</p>
+{% endif %}
 {% endblock %}

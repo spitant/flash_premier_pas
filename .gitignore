@@ -132,3 +132,6 @@ dmypy.json
 
 # database (SQLITE)
 database.db
+
+# Generated file
+pyproject.toml

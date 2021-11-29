@@ -1,0 +1,9 @@
+graft templates
+graft static
+include requirements.txt TODO.txt pylintrc Makefile make.bat app.py
+exclude .gitignore .coverage
+prune dist
+prune build
+prune migrations
+global-exclude *.py[cod]
+global-exclude *.db

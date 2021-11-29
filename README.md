@@ -5,6 +5,7 @@ Ce projet a été construit avec l'aide des tutoriels suivant :
 - [Comment ajouter une authentification à votre application avec Flask-Login](https://www.digitalocean.com/community/tutorials/how-to-add-authentication-to-your-app-with-flask-login-fr)
 - [Testing our Hello World app](https://riptutorial.com/flask/example/4122/testing-our-hello-world-app)
 - [Simple Flask Pagination](https://betterprogramming.pub/simple-flask-pagination-example-4190b12c2e2e)
+- [Packaging Python Projects](https://packaging.python.org/tutorials/packaging-projects/)
 
 # 2. Utilisation
 
@@ -43,3 +44,8 @@ Ce projet a été construit avec l'aide des tutoriels suivant :
 ## 4.1 Generation de la documentation
 
     make html
+
+## 5 Packaging
+
+    python -m projet.tools.create_pyproject_toml.py
+    python -m build

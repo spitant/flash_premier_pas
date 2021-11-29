@@ -37,3 +37,7 @@ Lorem
 
 # Documentation
 sphinx
+
+# package
+build
+setuptools

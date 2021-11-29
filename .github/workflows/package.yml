@@ -1,4 +1,4 @@
-name: Analyse de code
+name: Package
 
 on: [push]
 
@@ -17,7 +17,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install setuptools build
+        pip install -r requirements.txt
     - name: Generation du fichier pyproject.toml
       run: |
         python -m projet.tools.create_pyproject_toml.py

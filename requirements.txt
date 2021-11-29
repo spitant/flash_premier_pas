@@ -23,6 +23,10 @@ pylint_flask_sqlalchemy
 pycodestyle
 flake8
 
+
+# support https
+pyopenssl
+
 # Automated tests
 pytest
 pytest-cov

@@ -26,7 +26,7 @@ Ce projet a été construit avec l'aide des tutoriels suivant :
 
     export FLASK_APP=app
     export FLASK_ENV=development
-    flask run
+    flask run --cert=adhoc
 
 # 3 Tests
 

@@ -16,6 +16,7 @@ DONE;Ajout d'un favicon;
 DONE;Reorganisation du code (hello.py);
 DONE;Utiliser flask-sqlalchemy pour gérer la base de donnée;
 DONE;Mettre en place un système de pagination;
+DONE;Passage en https;
 TODO;Mettre en place un system d'authenfication;
 TODO;Enrichir les tests unitaire;
 TODO;Creer un systeme de packaging (wheel);

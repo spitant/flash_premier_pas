@@ -20,7 +20,7 @@ jobs:
         pip install -r requirements.txt
     - name: Generation du fichier pyproject.toml
       run: |
-        python -m projet.tools.create_pyproject_toml.py
+        python -m projet.tools.create_pyproject_toml
     - name: Création des package
       run: |
         python -m build

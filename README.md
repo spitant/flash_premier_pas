@@ -1,6 +1,6 @@
 # 1. Premier pas d'utilisation de flask
 
-Ce projet a été construit avec l'aide des tutoriels suivant : 
+Ce projet a été construit avec l'aide des tutoriels suivant :
 - [Comment créer une application web en utilisant Flask en Python 3](https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-using-flask-in-python-3-fr)
 - [Comment ajouter une authentification à votre application avec Flask-Login](https://www.digitalocean.com/community/tutorials/how-to-add-authentication-to-your-app-with-flask-login-fr)
 - [Testing our Hello World app](https://riptutorial.com/flask/example/4122/testing-our-hello-world-app)
@@ -12,6 +12,11 @@ Ce projet a été construit avec l'aide des tutoriels suivant :
 ## 2.1 Installation des prérequis
 
     pip install -r requirements.txt
+
+### 2.1.2 Install the git hook scripts
+
+	pre-commit install
+	pre-commit run --all-files
 
 ## 2.2 Création de la base de donnée
 
@@ -37,7 +42,7 @@ Ce projet a été construit avec l'aide des tutoriels suivant :
 
 ## 3.2 Lancement des tests
 
-    pytest --cov
+    python -m pytest --cov --color yes
 
 # 4 Documentation
 

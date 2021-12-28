@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """Test unitaire"""
 import random
 from string import ascii_lowercase
@@ -15,7 +16,7 @@ def auto_setup(request):
     :param request:
     :return:None
     """
-    print('auto_setup')
+    print("auto_setup")
     init_database()
 
     def auto_teardown():
@@ -23,7 +24,7 @@ def auto_setup(request):
         Netoyage de l'environnement
         :return: None
         """
-        print('auto_teardown')
+        print("auto_teardown")
 
     request.addfinalizer(auto_teardown)
 
@@ -35,7 +36,7 @@ def random_string(size=6, chars=ascii_lowercase):
     :param chars: liste des caractères
     :return: chaine de caractère aléatoire
     """
-    return ''.join(random.choice(chars) for _ in range(size))
+    return "".join(random.choice(chars) for _ in range(size))
 
 
 def list_routes(method):
@@ -46,7 +47,7 @@ def list_routes(method):
     """
     rules = []
     for rule in app.url_map.iter_rules():
-        if 'static' not in rule.endpoint and method in rule.methods:
+        if "static" not in rule.endpoint and method in rule.methods:
             rules.append(str(rule))
     return rules
 

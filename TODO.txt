@@ -23,5 +23,3 @@ DONE;Automatisation du systeme de packaging (wheel);
 TODO;Mettre en place un system d'authenfication;
 TODO;Enrichir les tests unitaire;
 TODO;Tester le syteme de packaging;
-
-

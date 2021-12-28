@@ -1,27 +1,38 @@
 # This file is used by pip to install required python packages
 # Usage: pip install -r requirements.txt
 
+
+# black formating tool
+black==21.12b0
+
+# package
+build
+flake8
 # Flask Framework
 Flask
-werkzeug
-
-# Database
-flask-sqlalchemy
-flask-migrate
 
 # Minify flask text/html
 Flask-HTMLmin
+Flask-MDE
+flask-migrate
+
+# Database
+flask-sqlalchemy
+
+# Example base de données
+Lorem
 
 # Support markdown
 markdown
-Flask-MDE
+
+# Precommit manager
+pre-commit
+pycodestyle
 
 # Analyse static
 pylint
 pylint-flask
 pylint_flask_sqlalchemy
-pycodestyle
-flake8
 
 
 # support https
@@ -31,13 +42,8 @@ pyopenssl
 pytest
 pytest-cov
 pytest-flask
-
-# Example base de données
-Lorem
+setuptools
 
 # Documentation
 sphinx
-
-# package
-build
-setuptools
+werkzeug

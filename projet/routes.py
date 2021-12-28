@@ -64,7 +64,10 @@ def index():
         return redirect(url_for("index", page=1))
     except TypeError:
         return redirect(url_for("index", page=1))
-    posts = db.session.query(Article).paginate(page=page, per_page=ROWS_PER_PAGE)
+    posts = db.session.query(Article).paginate(
+        page=page,
+        per_page=ROWS_PER_PAGE,
+    )
     return render_template("index.html", posts=posts)
 
 
@@ -112,7 +115,10 @@ def post(post_id):
     :param post_id: Identifiant de l'article
     :return: Article correspondant
     """
-    posts = Article.query.filter_by(id=post_id).paginate(page=1, per_page=ROWS_PER_PAGE)
+    posts = Article.query.filter_by(id=post_id).paginate(
+        page=1,
+        per_page=ROWS_PER_PAGE,
+    )
     return render_template("index.html", posts=posts)
 
 

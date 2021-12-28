@@ -36,7 +36,7 @@ def random_string(size=6, chars=ascii_lowercase):
     :param chars: liste des caractères
     :return: chaine de caractère aléatoire
     """
-    return "".join(random.choice(chars) for _ in range(size))
+    return "".join(random.choice(chars) for _ in range(size))  # nosec
 
 
 def list_routes(method):
@@ -64,7 +64,9 @@ def test_url_badmethod():
         if "<" not in url and ">" not in url:
             if url not in put_list:
                 response = app.test_client().put(url)
-                assert response.status_code == 405  # Method not allowed
+                assert (
+                    response.status_code == 405
+                )  # nosec  # Method not allowed
 
 
 def test_url_ok():
@@ -77,7 +79,7 @@ def test_url_ok():
         # on verifie que les URL sans parametres...
         if "<" not in url and ">" not in url:
             response = app.test_client().get(url, follow_redirects=True)
-            assert response.status_code == 200  # OK
+            assert response.status_code == 200  # nosec # OK
         # assert response.data == b'Hello, World!'
 
 
@@ -93,4 +95,4 @@ def test_url_ko():
         while url in list_routes("GET"):
             url = random_string()
         response = app.test_client().get(url)
-        assert response.status_code == 404  # Not found
+        assert response.status_code == 404  # nosec # Not found

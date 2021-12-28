@@ -33,3 +33,19 @@ repos:
     rev: v2.30.0
     hooks:
     -   id: pyupgrade
+-   repo: https://github.com/Lucas-C/pre-commit-hooks-lxml
+    sha: v1.1.0
+    hooks:
+    -   id: forbid-html-img-without-alt-text
+    -   id: forbid-non-std-html-attributes
+    -   id: html-tags-blacklist
+    -   id: html-attributes-blacklist
+-   repo: https://github.com/pycqa/flake8
+    rev: '4.0.1'
+    hooks:
+    -   id: flake8
+-   repo: https://github.com/Lucas-C/pre-commit-hooks-bandit
+    rev: v1.0.5
+    hooks:
+    -   id: python-bandit-vulnerability-check
+        args: [--recursive, clumper]

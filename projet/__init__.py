@@ -22,7 +22,7 @@ class Config:
     BASE_DIR = join(dirname(abspath(__file__)), "..")
     SQLALCHEMY_DATABASE_URI = "sqlite:///" + join(BASE_DIR, DATABASE_FILE)
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SECRET_KEY = "password"
+    SECRET_KEY = "password"  # nosec
     MINIFY_HTML = True
 
 
